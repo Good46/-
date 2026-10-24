@@ -337,11 +337,21 @@ const firebaseConfig = {
 };
 
 // تهيئة Firebase
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-const activitiesCollection = db.collection("activities");
+try {
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  const activitiesCollection = db.collection("activities");
+  
+  // ربط المتغيرات بالـ window عشان نقدر نستخدمها في الدوال
+  window.db = db;
+  window.activitiesCollection = activitiesCollection;
+  console.log("✅ تم الاتصال بـ Firebase بنجاح");
+} catch (error) {
+  console.error("❌ خطأ في الاتصال بـ Firebase:", error);
+  alert("حدث خطأ في الاتصال بقاعدة البيانات. يرجى مراجعة الكونسول (F12).");
+}
 
-const ADMIN_PASSWORD = "Jaafar@2026";
+const ADMIN_PASSWORD = "Jaafar@2026"; // يرجى تغييرها لكلمة قوية
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 const AUTH_KEY = 'jafar_admin_session';
 
@@ -490,13 +500,15 @@ async function addActivity(){
   btn.disabled = true;
 
   try {
-    await activitiesCollection.add(newActivity);
+    console.log("محاولة حفظ النشاط...", newActivity);
+    await window.activitiesCollection.add(newActivity);
+    console.log("✅ تم الحفظ بنجاح!");
     clearForm();
     renderActivities();
     alert('تم حفظ النشاط بنجاح ✅ وظهر للجميع');
   } catch(err) {
-    console.error(err);
-    alert('⚠️ حدث خطأ أثناء الحفظ. تأكد من اتصالك بالإنترنت أو من إعدادات قاعدة البيانات.');
+    console.error("❌ خطأ أثناء الحفظ:", err);
+    alert('⚠️ فشل الحفظ! راجع الكونسول (F12) لمعرفة السبب.');
   } finally {
     btn.innerHTML = originalText;
     btn.disabled = false;
@@ -564,7 +576,8 @@ async function renderActivities(){
   wrap.innerHTML = '<div class="empty" style="grid-column:1/-1;text-align:center;padding:40px;">⏳ جاري تحميل الأنشطة من السحابة...</div>';
   
   try {
-    const snapshot = await activitiesCollection.orderBy('createdAt', 'desc').get();
+    console.log("محاولة جلب الأنشطة...");
+    const snapshot = await window.activitiesCollection.orderBy('createdAt', 'desc').get();
     const list = [];
     snapshot.forEach(doc => {
       list.push({ id: doc.id, ...doc.data() });
@@ -603,9 +616,10 @@ async function renderActivities(){
           </div>
         </div>`;
     }).join('');
+    console.log("✅ تم عرض الأنشطة بنجاح");
   } catch (error) {
-    console.error("Error fetching activities: ", error);
-    wrap.innerHTML = '<div class="empty" style="color:red;">⚠️ تعذر الاتصال بقاعدة البيانات. تأكد من اتصالك بالإنترنت.</div>';
+    console.error("❌ خطأ في جلب الأنشطة:", error);
+    wrap.innerHTML = '<div class="empty" style="color:red;">⚠️ تعذر الاتصال بقاعدة البيانات. تأكد من الصلاحيات (Rules).</div>';
   }
 }
 
@@ -614,10 +628,10 @@ async function deleteActivity(id){
   if(!confirm('هل تريد حذف هذا النشاط نهائياً للجميع؟')) return;
   
   try {
-    await activitiesCollection.doc(id).delete();
+    await window.activitiesCollection.doc(id).delete();
     renderActivities();
   } catch (error) {
-    console.error(error);
+    console.error("❌ خطأ في الحذف:", error);
     alert('حدث خطأ أثناء الحذف');
   }
 }
