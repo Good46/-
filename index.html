@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ثانوية جعفر الصادق - مكة المكرمة</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a5c36' stroke='%23c9a227' stroke-width='4'/><text x='50' y='38' font-family='Tahoma, Arial' font-size='18' font-weight='bold' fill='%23c9a227' text-anchor='middle' dominant-baseline='central'>ثانوية</text><text x='50' y='60' font-family='Tahoma, Arial' font-size='16' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='central'>جعفر الصادق</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Amiri:wght@700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+  :root{--green:#0a5c36;--green-dark:#064025;--green-light:#e8f3ec;--gold:#c9a227;--gold-light:#f5e9c8;--bg:#fafaf7;--text:#1e2a23;--muted:#5f6f66;}
+  *{box-sizing:border-box;margin:0;padding:0;font-family:"Tajawal", "Segoe UI", Tahoma, sans-serif;}
+  body{background:var(--bg);color:var(--text);line-height:1.8;}
+  a{color:inherit;text-decoration:none;}
+  .top-bar{background:var(--green-dark);color:var(--gold-light);text-align:center;padding:6px 10px;font-size:.82rem;letter-spacing:.5px;border-bottom:2px solid var(--gold);}
+  header{background:linear-gradient(135deg, var(--green), var(--green-dark));color:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 15px rgba(0,0,0,.2);border-bottom:3px solid var(--gold);}
+  .nav{max-width:1150px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;flex-wrap:wrap;gap:10px;}
+  .brand{display:flex;align-items:center;gap:14px;cursor:pointer;}
+  .logo{width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 30% 30%, var(--gold-light), var(--gold));display:grid;place-items:center;color:var(--green-dark);font-family:"Amiri", serif;font-weight:700;font-size:1.35rem;border:2px solid var(--gold-light);box-shadow:0 0 0 3px rgba(201,162,39,.25);}
+  .brand-text{display:flex;flex-direction:column;line-height:1.2;}
+  .brand-text .name{font-weight:800;font-size:1.15rem;}
+  .brand-text .sub{font-size:.75rem;color:var(--gold-light);letter-spacing:1px;}
+  nav ul{display:flex;gap:6px;list-style:none;flex-wrap:wrap;}
+  nav a{padding:8px 14px;border-radius:8px;font-weight:500;font-size:.95rem;transition:.2s;cursor:pointer;}
+  nav a:hover{background:rgba(255,255,255,.12);color:var(--gold-light);}
+  .hero{background:linear-gradient(rgba(6,64,37,.88), rgba(10,92,54,.9)), url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600') center/cover;color:#fff;text-align:center;padding:110px 20px 100px;position:relative;}
+  .hero::after{content:"﷽";position:absolute;top:20px;left:50%;transform:translateX(-50%);font-family:"Amiri", serif;font-size:2rem;opacity:.25;color:var(--gold);}
+  .hero h1{font-family:"Amiri", serif;font-size:3rem;margin-bottom:16px;letter-spacing:1px;text-shadow:0 2px 8px rgba(0,0,0,.3);}
+  .hero .divider{width:120px;height:3px;background:var(--gold);margin:18px auto;border-radius:3px;position:relative;}
+  .hero .divider::before,.hero .divider::after{content:"◆";position:absolute;top:-10px;color:var(--gold);font-size:.9rem;}
+  .hero .divider::before{right:-20px;}.hero .divider::after{left:-20px;}
+  .hero p{font-size:1.15rem;opacity:.95;max-width:750px;margin:auto;font-weight:400;}
+  .btn{display:inline-block;margin-top:28px;background:var(--gold);color:var(--green-dark);padding:14px 34px;border-radius:30px;font-weight:700;transition:.2s;border:none;cursor:pointer;box-shadow:0 4px 15px rgba(201,162,39,.4);font-family:"Tajawal", sans-serif;}
+  .btn:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(201,162,39,.6);}
+  .btn-outline{background:transparent;color:var(--gold-light);border:2px solid var(--gold);margin-right:10px;box-shadow:none;}
+  .btn-outline:hover{background:var(--gold);color:var(--green-dark);}
+  section{max-width:1150px;margin:auto;padding:70px 20px;}
+  .section-head{text-align:center;margin-bottom:45px;}
+  h2.title{font-family:"Amiri", serif;color:var(--green);font-size:2.2rem;margin-bottom:8px;}
+  .title-line{width:80px;height:3px;background:var(--gold);margin:12px auto 0;border-radius:3px;}
+  .subtitle{color:var(--muted);margin-top:12px;font-size:1rem;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;}
+  .card{background:#fff;border-radius:18px;padding:32px 26px;box-shadow:0 4px 20px rgba(10,92,54,.07);border-top:4px solid var(--gold);transition:.3s;position:relative;overflow:hidden;}
+  .card::before{content:"";position:absolute;top:-40px;left:-40px;width:100px;height:100px;border-radius:50%;background:var(--green-light);opacity:.6;}
+  .card:hover{transform:translateY(-5px);box-shadow:0 8px 30px rgba(10,92,54,.12);}
+  .card h3{color:var(--green);margin-bottom:14px;font-size:1.25rem;position:relative;z-index:1;}
+  .card p{color:var(--muted);font-size:.98rem;position:relative;z-index:1;}
+  .page-head{background:linear-gradient(135deg, var(--green), var(--green-dark));color:#fff;text-align:center;padding:70px 20px;border-bottom:3px solid var(--gold);position:relative;}
+  .page-head h1{font-family:"Amiri", serif;font-size:2.5rem;margin-bottom:12px;}
+  .page-head p{opacity:.95;max-width:700px;margin:auto;}
+  .login-box{max-width:400px;margin:0 auto 40px;background:linear-gradient(145deg,#fff, #f8fbf9);border-radius:20px;padding:32px;box-shadow:0 10px 40px rgba(10,92,54,.12);text-align:center;border:1px solid var(--green-light);position:relative;}
+  .login-box::before{content:"🔒";position:absolute;top:-18px;left:50%;transform:translateX(-50%);background:var(--gold);width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:1.1rem;box-shadow:0 4px 12px rgba(201,162,39,.4);}
+  .login-box h3{color:var(--green);margin:8px 0 8px;font-family:"Amiri", serif;font-size:1.4rem;}
+  .login-box p{color:var(--muted);font-size:.88rem;margin-bottom:18px;}
+  .login-box input{width:100%;padding:13px 16px;border:2px solid var(--green-light);border-radius:12px;font-size:1rem;margin-bottom:12px;background:#fbfdfb;text-align:center;font-family:"Tajawal", sans-serif;transition:.2s;}
+  .login-box input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px rgba(10,92,54,.1);}
+  .login-box .err{color:#c33;font-size:.85rem;margin-top:10px;min-height:18px;font-weight:700;}
+  .activity-form{background:linear-gradient(145deg,#fff, #f8fbf9);border-radius:20px;padding:32px;box-shadow:0 10px 40px rgba(10,92,54,.1);margin-bottom:48px;border:1px solid var(--green-light);position:relative;overflow:hidden;}
+  .activity-form::before{content:"";position:absolute;top:0;right:0;width:120px;height:120px;background:radial-gradient(circle, var(--green-light), transparent);opacity:.6;}
+  .activity-form h3{color:var(--green);margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:"Amiri", serif;font-size:1.5rem;padding-bottom:16px;border-bottom:2px solid var(--green-light);position:relative;z-index:1;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;position:relative;z-index:1;}
+  .form-grid .full{grid-column:1/-1;}
+  .form-grid > div{background:#fff;border-radius:14px;padding:16px;border:1px solid var(--green-light);}
+  label{display:block;font-size:.88rem;color:var(--green);font-weight:700;margin-bottom:8px;}
+  input[type=text], input[type=url], input[type=password], select, textarea{width:100%;padding:11px 14px;border:1.5px solid #d5ddd7;border-radius:10px;font-size:.98rem;background:#fbfdfb;font-family:"Tajawal", sans-serif;transition:.2s;}
+  input:focus, select:focus, textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(10,92,54,.08);background:#fff;}
+  textarea{resize:vertical;min-height:80px;}
+  .file-upload{position:relative;display:block;width:100%;}
+  .file-upload input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+  .file-upload .box{border:2px dashed var(--green-light);background:#fbfdfb;border-radius:12px;padding:20px;text-align:center;transition:.2s;cursor:pointer;}
+  .file-upload .box:hover{border-color:var(--green);background:var(--green-light);}
+  .file-upload .box .icon{font-size:1.8rem;margin-bottom:6px;display:block;}
+  .file-upload .box .txt{font-size:.88rem;color:var(--muted);font-weight:500;}
+  .file-upload .box .filename{margin-top:8px;font-size:.85rem;color:var(--green);font-weight:700;word-break:break-all;}
+  .file-upload .box.error{border-color:#c33;background:#fbe9e9;}
+  .thumb-preview{margin-top:10px;border-radius:10px;overflow:hidden;display:none;border:1px solid var(--green-light);}
+  .thumb-preview img{width:100%;height:120px;object-fit:cover;display:block;}
+  .thumb-preview.show{display:block;}
+  .size-warning{display:none;margin-top:10px;padding:10px 14px;background:#fbe9e9;border:1.5px solid #e6a5a5;border-radius:10px;color:#a22;font-size:.85rem;font-weight:700;line-height:1.5;}
+  .size-warning.show{display:block;}
+  .form-actions{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end;padding-top:18px;border-top:2px dashed var(--green-light);position:relative;z-index:1;}
+  .save-btn{background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff;border:none;padding:13px 32px;border-radius:12px;font-weight:700;cursor:pointer;transition:.2s;font-family:"Tajawal", sans-serif;font-size:1rem;box-shadow:0 4px 15px rgba(10,92,54,.25);display:inline-flex;align-items:center;gap:8px;}
+  .save-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(10,92,54,.35);}
+  .ghost{background:#fff;color:var(--green);border:2px solid var(--green-light);padding:12px 24px;border-radius:12px;cursor:pointer;font-weight:700;font-family:"Tajawal", sans-serif;transition:.2s;}
+  .ghost:hover{background:var(--green-light);}
+  .logout-btn{background:#fff;color:#b33;border:2px solid #fbe9e9;padding:9px 18px;border-radius:10px;font-weight:700;cursor:pointer;font-size:.85rem;font-family:"Tajawal", sans-serif;transition:.2s;}
+  .logout-btn:hover{background:#fbe9e9;}
+  .activities{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px;}
+  .activity-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 6px 25px rgba(10,92,54,.08);display:flex;flex-direction:column;transition:.3s cubic-bezier(0.4,0,0.2,1);border:1px solid var(--green-light);position:relative;}
+  .activity-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(10,92,54,.18);border-color:var(--gold);}
+  .activity-card .media{height:190px;background:linear-gradient(135deg,var(--green-light),#d4e8dc);display:grid;place-items:center;color:var(--green);font-weight:700;font-size:1.15rem;position:relative;overflow:hidden;text-align:center;padding:10px;}
+  .activity-card img{width:100%;height:190px;object-fit:cover;display:block;transition:.4s;cursor:zoom-in;}
+  .activity-card:hover img{transform:scale(1.06);}
+  .activity-card .body{padding:24px;flex:1;display:flex;flex-direction:column;}
+  .activity-card .tag{display:inline-block;background:linear-gradient(135deg,var(--gold-light),#f9eec9);color:#7a5f10;font-size:.75rem;padding:5px 14px;border-radius:20px;margin-bottom:12px;font-weight:700;border:1px solid rgba(201,162,39,.3);}
+  .activity-card h3{color:var(--green);margin-bottom:12px;font-size:1.2rem;font-family:"Amiri", serif;line-height:1.4;}
+  .activity-card p{color:var(--muted);font-size:.92rem;flex:1;line-height:1.7;}
+  .activity-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;padding-top:16px;border-top:1px solid var(--green-light);}
+  .activity-links a, .activity-links button{padding:9px 16px;border-radius:10px;font-size:.85rem;font-weight:700;border:none;cursor:pointer;font-family:"Tajawal", sans-serif;transition:.2s;display:inline-flex;align-items:center;gap:6px;}
+  .open-link{background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff;flex:1;justify-content:center;box-shadow:0 3px 10px rgba(10,92,54,.2);}
+  .open-link:hover{transform:translateY(-2px);box-shadow:0 5px 15px rgba(10,92,54,.3);}
+  .del-btn{background:#fff;color:#c33;border:1.5px solid #fbe9e9;}
+  .del-btn:hover{background:#fbe9e9;}
+  .empty{text-align:center;color:var(--muted);padding:80px 30px;grid-column:1/-1;font-size:1.1rem;background:linear-gradient(145deg,#fff, #f8fbf9);border-radius:20px;border:2px dashed var(--green-light);position:relative;}
+  .empty::before{content:"📚";display:block;font-size:3rem;margin-bottom:16px;opacity:.6;}
+  .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:30px;}
+  .contact-info{background:#fff;border-radius:18px;padding:32px;box-shadow:0 4px 20px rgba(10,92,54,.08);border-right:5px solid var(--gold);}
+  .contact-info p{margin-bottom:16px;display:flex;align-items:flex-start;gap:10px;}
+  .contact-info strong{color:var(--green);min-width:110px;}
+  .map{border-radius:18px;overflow:hidden;min-height:320px;box-shadow:0 4px 20px rgba(10,92,54,.08);border:1px solid var(--green-light);display:flex;flex-direction:column;}
+  .map iframe{width:100%;flex:1;min-height:280px;border:0;}
+  .map-link{display:block;text-align:center;background:var(--green);color:#fff;padding:12px;font-weight:700;transition:.2s;}
+  .map-link:hover{background:var(--green-dark);}
+  footer{background:var(--green-dark);color:#cfe3d6;text-align:center;padding:30px 20px;margin-top:50px;font-size:.9rem;border-top:3px solid var(--gold);}
+  footer .footer-brand{font-family:"Amiri", serif;font-size:1.3rem;color:var(--gold-light);margin-bottom:8px;}
+  .page{display:none;}
+  .page.active{display:block;}
+  .hidden{display:none !important;}
+  .lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:20px;cursor:zoom-out;animation:fadeIn .2s ease;}
+  .lightbox.show{display:flex;}
+  .lightbox img{max-width:95vw;max-height:90vh;object-fit:contain;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5);cursor:default;animation:zoomIn .3s ease;}
+  .lightbox .close-btn{position:absolute;top:20px;right:20px;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);color:#fff;font-size:1.6rem;cursor:pointer;display:grid;place-items:center;transition:.2s;backdrop-filter:blur(10px);}
+  .lightbox .close-btn:hover{background:rgba(255,255,255,.3);transform:rotate(90deg);}
+  .lightbox .caption{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.7);color:#fff;padding:10px 24px;border-radius:20px;font-size:.95rem;font-weight:700;backdrop-filter:blur(10px);max-width:90%;text-align:center;}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes zoomIn{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+  @media(max-width:720px){
+    .form-grid,.contact-wrap{grid-template-columns:1fr;}
+    .hero h1{font-size:2rem;}
+    .hero{padding:80px 20px 70px;}
+    .page-head h1{font-size:1.9rem;}
+    nav ul{gap:4px;font-size:.85rem;}
+    nav a{padding:6px 10px;}
+    .brand-text .name{font-size:.95rem;}
+    .logo{width:46px;height:46px;font-size:1.1rem;}
+    h2.title{font-size:1.8rem;}
+    .hero .btn-outline{margin-right:0;margin-top:10px;display:block;}
+    .activity-form{padding:22px;}
+    .login-box{padding:26px;}
+    .lightbox .close-btn{width:42px;height:42px;font-size:1.3rem;top:12px;right:12px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">﷽ — ثانوية جعفر الصادق — مكة المكرمة</div>
+
+<header>
+  <div class="nav">
+    <div class="brand" onclick="showPage('home')">
+      <div class="logo">ج ص</div>
+      <div class="brand-text">
+        <span class="name">ثانوية جعفر الصادق</span>
+        <span class="sub">مكة المكرمة · مسارات</span>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a onclick="showPage('home')">الرئيسية</a></li>
+        <li><a onclick="showPage('home','about')">عن المدرسة</a></li>
+        <li><a onclick="showPage('home','vision')">الرؤية والرسالة</a></li>
+        <li><a onclick="showPage('activities')">الأنشطة</a></li>
+        <li><a onclick="showPage('home','contact')">التواصل</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div id="page-home" class="page active">
+  <div class="hero">
+    <h1>ثانوية جعفر الصادق</h1>
+    <div class="divider"></div>
+    <p>بيئة تعليمية محفزة تُعدّ جيلاً متميزاً بالعلم والأخلاق في قلب مكة المكرمة — نظام المسارات</p>
+    <button class="btn" onclick="showPage('activities')">استعرض الأنشطة</button>
+    <a class="btn btn-outline" href="https://maps.app.goo.gl/EoUkpe2R5eHfJ4La6" target="_blank" rel="noopener">📍 موقعنا على الخريطة</a>
+  </div>
+
+  <section id="about">
+    <div class="section-head">
+      <h2 class="title">عن المدرسة</h2>
+      <div class="title-line"></div>
+      <p class="subtitle">تعريف موجز بمدرستنا ورسالتها التربوية</p>
+    </div>
+    <div class="cards">
+      <div class="card"><h3>من نحن</h3><p>ثانوية جعفر الصادق في مكة المكرمة، مؤسسة تعليمية تسعى لتقديم تعليم نوعي يجمع بين التميز الأكاديمي والتربية الأخلاقية في بيئة آمنة ومحفزة.</p></div>
+      <div class="card"><h3>نظام المسارات</h3><p>نطبّق نظام المسارات الثانوية الحديث الذي يتيح للطالب اختيار مساره التعليمي بما يتوافق مع قدراته واهتماماته ومتطلبات سوق العمل المستقبلي.</p></div>
+      <div class="card"><h3>لماذا نحن؟</h3><p>كادر تعليمي مؤهل، مناهج متطورة، أنشطة لا صفية متنوعة، ومتابعة مستمرة لمستوى الطلاب.</p></div>
+    </div>
+  </section>
+
+  <section id="vision" style="background:var(--green-light);max-width:none;padding:70px 0;">
+    <div style="max-width:1150px;margin:auto;padding:0 20px;">
+      <div class="section-head">
+        <h2 class="title">الرؤية والرسالة</h2>
+        <div class="title-line"></div>
+        <p class="subtitle">بوصلتنا التربوية</p>
+      </div>
+      <div class="cards">
+        <div class="card"><h3>رؤيتنا</h3><p>أن نكون من المدارس الثانوية الرائدة في مكة المكرمة في تقديم تعليم متميز يخرّج طلاباً متفوقين علمياً وأخلاقياً.</p></div>
+        <div class="card"><h3>رسالتنا</h3><p>تقديم تعليم شامل عالي الجودة يعتمد على أساليب تعليمية حديثة، وبيئة تربوية إسلامية، وشراكة فعّالة مع أولياء الأمور.</p></div>
+        <div class="card"><h3>قيمنا</h3><p>الإخلاص، الانتماء، الاحترام، التعاون، الإبداع، والمسؤولية.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-head">
+      <h2 class="title">التواصل معنا</h2>
+      <div class="title-line"></div>
+      <p class="subtitle">يسعدنا استقبال استفساراتكم</p>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <p><strong>📍 الموقع:</strong> <span>مكة المكرمة، المملكة العربية السعودية</span></p>
+        <p><strong>🏫 النوع:</strong> <span>ثانوية — نظام المسارات</span></p>
+        <p><strong>📞 الهاتف:</strong> <span>012-XXXXXXX</span></p>
+        <p><strong>✉️ البريد:</strong> <span>info@school.example</span></p>
+        <p><strong>🕐 الدوام:</strong> <span>الأحد - الخميس، 7:00 ص - 2:00 م</span></p>
+        <a class="btn" style="margin-top:6px;" href="https://maps.app.goo.gl/EoUkpe2R5eHfJ4La6" target="_blank" rel="noopener">افتح الموقع في خرائط جوجل</a>
+      </div>
+      <div class="map">
+        <iframe src="https://maps.google.com/maps?q=%D8%AC%D8%B9%D9%81%D8%B1%20%D8%A7%D9%84%D8%B5%D8%A7%D8%AF%D9%82%20%D8%A7%D9%84%D8%AB%D8%A7%D9%86%D9%88%D9%8A%D8%A9%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <a class="map-link" href="https://maps.app.goo.gl/EoUkpe2R5eHfJ4La6" target="_blank" rel="noopener">📍 عرض الموقع الكامل على خرائط جوجل</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="page-activities" class="page">
+  <div class="page-head">
+    <h1>أنشطة المدرسة</h1>
+    <p>هنا تُعرض جميع أنشطة ثانوية جعفر الصادق — صور، PDF، Word، RAR، ZIP، وروابط</p>
+  </div>
+
+  <section>
+    <!-- قسم الباركود -->
+    <div style="background:#fff;border-radius:20px;padding:24px;box-shadow:0 10px 40px rgba(10,92,54,.08);text-align:center;margin-bottom:36px;border:1px solid var(--green-light);">
+      <h3 style="color:var(--green);margin-bottom:12px;font-family:'Amiri', serif;font-size:1.3rem;">📱 امسح الباركود لفتح الموقع من جوالك</h3>
+      <div id="qrcode" style="display:flex;justify-content:center;align-items:center;min-height:150px;"></div>
+      <p style="color:var(--muted);font-size:.85rem;margin-top:10px;">أو قم بزيارة الرابط مباشرة من متصفح جوالك.</p>
+    </div>
+
+    <div style="text-align:center;margin-bottom:36px;">
+      <button id="showLoginBtn" class="btn" onclick="showLogin()" style="display:inline-flex;align-items:center;gap:10px;font-size:1.05rem;padding:14px 36px;">🔐 دخول صاحب الموقع</button>
+    </div>
+
+    <div id="loginBox" class="login-box hidden">
+      <h3>دخول صاحب الموقع</h3>
+      <p>هذه المنطقة مخصصة لإدارة الأنشطة فقط</p>
+      <input id="passInput" type="password" placeholder="أدخل كلمة المرور" onkeydown="if(event.key==='Enter')tryLogin()">
+      <button class="save-btn" style="width:100%;justify-content:center;" onclick="tryLogin()">دخول</button>
+      <div class="err" id="loginErr"></div>
+    </div>
+
+    <div id="activityForm" class="activity-form hidden">
+      <h3>
+        <span>➕ إضافة نشاط جديد</span>
+        <button class="logout-btn" onclick="logout()">تسجيل الخروج</button>
+      </h3>
+
+      <div style="background:#f5e9c8;border:1.5px solid #e0c870;border-radius:12px;padding:12px 16px;margin-bottom:20px;font-size:.88rem;color:#7a5f10;font-weight:700;line-height:1.6;">
+        ⚠️ <strong>تنبيه مهم:</strong> الحد الأقصى لحجم الملف أو الصورة هو <strong>5 ميجا</strong>. أي ملف أكبر من ذلك <strong>لن يُحفظ</strong>. للملفات الكبيرة استخدم رابطاً خارجياً (Google Drive).
+      </div>
+
+      <div class="form-grid">
+        <div><label>عنوان النشاط *</label><input type="text" id="actTitle" placeholder="مثال: زيارة معرض الكتاب"></div>
+        <div>
+          <label>نوع المرفق</label>
+          <select id="actType">
+            <option value="image">🖼️ صورة</option>
+            <option value="pdf">📄 ملف PDF</option>
+            <option value="word">📝 ملف Word</option>
+            <option value="rar">🗜️ ملف RAR</option>
+            <option value="zip">🗜️ ملف ZIP</option>
+            <option value="link">🔗 رابط خارجي</option>
+          </select>
+        </div>
+        <div class="full"><label>الوصف</label><textarea id="actDesc" placeholder="وصف مختصر للنشاط..."></textarea></div>
+
+        <div>
+          <label>الصورة المصغرة (من جهازك)</label>
+          <label class="file-upload">
+            <input type="file" id="actThumbFile" accept="image/*">
+            <div class="box" id="thumbBox">
+              <span class="icon">🖼️</span>
+              <span class="txt">اضغط لاختيار صورة من جهازك</span>
+              <div class="filename" id="thumbFileName"></div>
+            </div>
+          </label>
+          <div class="size-warning" id="thumbWarning">⚠️ حجم الصورة أكبر من 5 ميجا — لن يتم رفعها. اختر صورة أصغر.</div>
+          <div class="thumb-preview" id="thumbPreview"><img id="thumbPreviewImg" src="" alt="معاينة"></div>
+        </div>
+
+        <div>
+          <label>ملف النشاط (PDF / Word / RAR / ZIP / صورة)</label>
+          <label class="file-upload">
+            <input type="file" id="actFile" accept=".pdf,.doc,.docx,.rar,.zip,image/*">
+            <div class="box" id="fileBox">
+              <span class="icon">📎</span>
+              <span class="txt">اضغط لاختيار ملف من جهازك</span>
+              <div class="filename" id="fileFileName"></div>
+            </div>
+          </label>
+          <div class="size-warning" id="fileWarning">⚠️ حجم الملف أكبر من 5 ميجا — لن يتم رفعه. استخدم رابطاً خارجياً أدناه.</div>
+          <div style="margin-top:10px;">
+            <label style="font-size:.82rem;color:var(--muted);">أو ضع رابطاً خارجياً (اختياري):</label>
+            <input type="url" id="actLink" placeholder="https://...">
+          </div>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="ghost" onclick="clearForm()">تفريغ</button>
+        <button class="save-btn" onclick="addActivity()">💾 حفظ النشاط</button>
+      </div>
+    </div>
+
+    <div class="activities" id="activitiesList"></div>
+  </section>
+</div>
+
+<footer>
+  <div class="footer-brand">ثانوية جعفر الصادق</div>
+  <div>© <span id="year"></span> جميع الحقوق محفوظة — مكة المكرمة</div>
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="close-btn" onclick="closeLightbox(event, true)">✕</button>
+  <img id="lightboxImg" src="" alt="عرض الصورة" onclick="event.stopPropagation()">
+  <div class="caption" id="lightboxCaption"></div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script>
+// إعدادات Firebase الخاصة بك
+const firebaseConfig = {
+  apiKey: "AIzaSyAT99F_WzJPBRW2toYRjhnbQtGnG4k0uPA",
+  authDomain: "jaafar-school.firebaseapp.com",
+  projectId: "jaafar-school",
+  storageBucket: "jaafar-school.firebasestorage.app",
+  messagingSenderId: "33040449543",
+  appId: "1:33040449543:web:c098621dfa67811bc1aaa2",
+  measurementId: "G-7T3752LY8M"
+};
+
+// تهيئة Firebase
+try {
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  const activitiesCollection = db.collection("activities");
+  
+  window.db = db;
+  window.activitiesCollection = activitiesCollection;
+  console.log("✅ تم الاتصال بـ Firebase بنجاح");
+} catch (error) {
+  console.error("❌ خطأ في الاتصال بـ Firebase:", error);
+  alert("حدث خطأ في الاتصال بقاعدة البيانات. يرجى مراجعة الكونسول (F12).");
+}
+
+const ADMIN_PASSWORD = "Jaafar@2026"; // يرجى تغييرها لكلمة قوية
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
+const AUTH_KEY = 'jafar_admin_session';
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// إنشاء الباركود
+new QRCode(document.getElementById("qrcode"), {
+    text: window.location.href,
+    width: 140,
+    height: 140,
+    colorDark : "#0a5c36",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
+});
+
+function showPage(page, anchor){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if(anchor){
+    setTimeout(() => {
+      const el = document.getElementById(anchor);
+      if(el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  }
+  if(page === 'activities') renderActivities();
+}
+
+let thumbData = '', fileData = '', fileName = '';
+
+document.getElementById('actThumbFile').addEventListener('change', function(e){
+  const f = e.target.files[0];
+  const warning = document.getElementById('thumbWarning');
+  const box = document.getElementById('thumbBox');
+  const nameEl = document.getElementById('thumbFileName');
+  const preview = document.getElementById('thumbPreview');
+
+  if(!f){
+    warning.classList.remove('show'); box.classList.remove('error');
+    nameEl.textContent = ''; preview.classList.remove('show'); thumbData = '';
+    return;
+  }
+
+  if(f.size > MAX_FILE_SIZE){
+    const sizeMB = (f.size / (1024*1024)).toFixed(2);
+    warning.innerHTML = `⚠️ حجم الصورة <strong>${sizeMB} ميجا</strong> أكبر من الحد المسموح (5 ميجا) — <strong>لن يتم رفعها</strong>. اختر صورة أصغر.`;
+    warning.classList.add('show'); box.classList.add('error');
+    nameEl.textContent = '❌ ' + f.name;
+    preview.classList.remove('show'); thumbData = ''; this.value = '';
+    return;
+  }
+
+  warning.classList.remove('show'); box.classList.remove('error');
+  nameEl.textContent = '✅ ' + f.name;
+  const r = new FileReader();
+  r.onload = ev => {
+    thumbData = ev.target.result;
+    document.getElementById('thumbPreviewImg').src = thumbData;
+    preview.classList.add('show');
+  };
+  r.readAsDataURL(f);
+});
+
+document.getElementById('actFile').addEventListener('change', function(e){
+  const f = e.target.files[0];
+  const warning = document.getElementById('fileWarning');
+  const box = document.getElementById('fileBox');
+  const nameEl = document.getElementById('fileFileName');
+
+  if(!f){
+    warning.classList.remove('show'); box.classList.remove('error');
+    nameEl.textContent = ''; fileData = ''; fileName = '';
+    return;
+  }
+
+  if(f.size > MAX_FILE_SIZE){
+    const sizeMB = (f.size / (1024*1024)).toFixed(2);
+    warning.innerHTML = `⚠️ حجم الملف <strong>${sizeMB} ميجا</strong> أكبر من الحد المسموح (5 ميجا) — <strong>لن يتم رفعه</strong>. استخدم رابطاً خارجياً.`;
+    warning.classList.add('show'); box.classList.add('error');
+    nameEl.textContent = '❌ ' + f.name;
+    fileData = ''; fileName = ''; this.value = '';
+    return;
+  }
+
+  warning.classList.remove('show'); box.classList.remove('error');
+  fileName = f.name;
+  nameEl.textContent = '✅ ' + f.name + ' (' + (f.size/(1024*1024)).toFixed(2) + ' ميجا)';
+  const r = new FileReader();
+  r.onload = ev => { fileData = ev.target.result; };
+  r.readAsDataURL(f);
+});
+
+function isLoggedIn(){ return sessionStorage.getItem(AUTH_KEY) === 'yes'; }
+
+function updateUI(){
+  const logged = isLoggedIn();
+  document.getElementById('activityForm').classList.toggle('hidden', !logged);
+  document.getElementById('showLoginBtn').classList.toggle('hidden', logged);
+  document.getElementById('loginBox').classList.add('hidden');
+}
+
+function showLogin(){
+  document.getElementById('loginBox').classList.remove('hidden');
+  document.getElementById('passInput').focus();
+}
+
+function tryLogin(){
+  const val = document.getElementById('passInput').value;
+  const err = document.getElementById('loginErr');
+  if(val === ADMIN_PASSWORD){
+    sessionStorage.setItem(AUTH_KEY, 'yes');
+    document.getElementById('passInput').value = '';
+    err.textContent = '';
+    updateUI();
+    renderActivities();
+  } else {
+    err.textContent = 'كلمة المرور غير صحيحة ❌';
+  }
+}
+
+function logout(){
+  sessionStorage.removeItem(AUTH_KEY);
+  updateUI();
+  renderActivities();
+}
+
+async function addActivity(){
+  if(!isLoggedIn()){ alert('غير مصرح لك بالإضافة'); return; }
+
+  const title = document.getElementById('actTitle').value.trim();
+  const desc  = document.getElementById('actDesc').value.trim();
+  const type  = document.getElementById('actType').value;
+  const linkInput = document.getElementById('actLink').value.trim();
+
+  if(!title){ alert('الرجاء إدخال عنوان النشاط'); return; }
+
+  const link = fileData || linkInput;
+  if(!link){ alert('الرجاء رفع ملف أو إضافة رابط خارجي'); return; }
+
+  const finalType = fileData ? (fileName ? detectType(fileName) : type) : type;
+
+  const newActivity = {
+    title: title,
+    desc: desc,
+    type: finalType,
+    thumb: thumbData,
+    link: link,
+    fileName: fileName || '',
+    date: new Date().toLocaleDateString('ar-SA'),
+    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  };
+
+  const btn = document.querySelector('.save-btn[onclick="addActivity()"]');
+  const originalText = btn.innerHTML;
+  btn.innerHTML = '⏳ جاري الحفظ...';
+  btn.disabled = true;
+
+  try {
+    console.log("محاولة حفظ النشاط...", newActivity);
+    await window.activitiesCollection.add(newActivity);
+    console.log("✅ تم الحفظ بنجاح!");
+    clearForm();
+    renderActivities();
+    alert('تم حفظ النشاط بنجاح ✅ وظهر للجميع');
+  } catch(err) {
+    console.error("❌ خطأ أثناء الحفظ:", err);
+    alert('⚠️ فشل الحفظ! راجع الكونسول (F12) لمعرفة السبب.');
+  } finally {
+    btn.innerHTML = originalText;
+    btn.disabled = false;
+  }
+}
+
+function detectType(filename){
+  const ext = filename.split('.').pop().toLowerCase();
+  if(['pdf'].includes(ext)) return 'pdf';
+  if(['doc','docx'].includes(ext)) return 'word';
+  if(['rar'].includes(ext)) return 'rar';
+  if(['zip'].includes(ext)) return 'zip';
+  if(['jpg','jpeg','png','gif','webp','bmp','svg'].includes(ext)) return 'image';
+  return 'link';
+}
+
+function clearForm(){
+  ['actTitle','actDesc','actLink','actThumbFile','actFile'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.value = '';
+  });
+  document.getElementById('thumbFileName').textContent = '';
+  document.getElementById('fileFileName').textContent = '';
+  document.getElementById('thumbPreview').classList.remove('show');
+  document.getElementById('thumbWarning').classList.remove('show');
+  document.getElementById('fileWarning').classList.remove('show');
+  document.getElementById('thumbBox').classList.remove('error');
+  document.getElementById('fileBox').classList.remove('error');
+  thumbData = ''; fileData = ''; fileName = '';
+}
+
+function typeLabel(t){
+  if(t==='pdf') return '📄 ملف PDF';
+  if(t==='word') return '📝 ملف Word';
+  if(t==='rar') return '🗜️ ملف RAR';
+  if(t==='zip') return '🗜️ ملف ZIP';
+  if(t==='image') return '🖼️ صورة';
+  return '🔗 رابط';
+}
+
+function openLightbox(src, caption){
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightboxCaption').textContent = caption || '';
+  lb.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(event, force){
+  if(force || event.target.id === 'lightbox'){
+    document.getElementById('lightbox').classList.remove('show');
+    document.body.style.overflow = '';
+  }
+}
+
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    document.getElementById('lightbox').classList.remove('show');
+    document.body.style.overflow = '';
+  }
+});
+
+async function renderActivities(){
+  const wrap = document.getElementById('activitiesList');
+  wrap.innerHTML = '<div class="empty" style="grid-column:1/-1;text-align:center;padding:40px;">⏳ جاري تحميل الأنشطة من السحابة...</div>';
+  
+  try {
+    console.log("محاولة جلب الأنشطة...");
+    const snapshot = await window.activitiesCollection.orderBy('createdAt', 'desc').get();
+    const list = [];
+    snapshot.forEach(doc => {
+      list.push({ id: doc.id, ...doc.data() });
+    });
+
+    if(!list.length){
+      wrap.innerHTML = '<div class="empty">لا توجد أنشطة مضافة بعد.</div>';
+      return;
+    }
+
+    wrap.innerHTML = list.map(a => {
+      const media = a.thumb
+        ? `<img src="${a.thumb}" alt="${a.title}" onclick="openLightbox('${a.thumb.replace(/'/g, "\\'")}', '${a.title.replace(/'/g, "\\'")}')">`
+        : `<div class="media">${typeLabel(a.type)}</div>`;
+      const openLabel = a.type==='pdf' ? 'فتح الملف'
+        : a.type==='word' ? 'تحميل الملف'
+        : (a.type==='rar'||a.type==='zip') ? 'تحميل الملف'
+        : a.type==='image' ? 'عرض الصورة'
+        : 'فتح الرابط';
+      const delBtn = isLoggedIn() ? `<button class="del-btn" onclick="deleteActivity('${a.id}')">🗑 حذف</button>` : '';
+      const openBtn = a.type === 'image'
+        ? `<button class="open-link" onclick="openLightbox('${a.link.replace(/'/g, "\\'")}', '${a.title.replace(/'/g, "\\'")}')">${openLabel}</button>`
+        : `<a class="open-link" href="${a.link}" target="_blank" rel="noopener">${openLabel}</a>`;
+
+      return `
+        <div class="activity-card">
+          ${media}
+          <div class="body">
+            <span class="tag">${typeLabel(a.type)}</span>
+            <h3>${a.title}</h3>
+            <p>${a.desc || ''}</p>
+            <div class="activity-links">
+              ${openBtn}
+              ${delBtn}
+            </div>
+          </div>
+        </div>`;
+    }).join('');
+    console.log("✅ تم عرض الأنشطة بنجاح");
+  } catch (error) {
+    console.error("❌ خطأ في جلب الأنشطة:", error);
+    wrap.innerHTML = '<div class="empty" style="color:red;">⚠️ تعذر الاتصال بقاعدة البيانات. تأكد من الصلاحيات (Rules).</div>';
+  }
+}
+
+async function deleteActivity(id){
+  if(!isLoggedIn()) return;
+  if(!confirm('هل تريد حذف هذا النشاط نهائياً للجميع؟')) return;
+  
+  try {
+    await window.activitiesCollection.doc(id).delete();
+    renderActivities();
+  } catch (error) {
+    console.error("❌ خطأ في الحذف:", error);
+    alert('حدث خطأ أثناء الحذف');
+  }
+}
+
+updateUI();
+renderActivities();
+</script>
+</body>
+</html>
