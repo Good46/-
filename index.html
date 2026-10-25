@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ثانوية جعفر الصادق - البوابة الإلكترونية</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='10' fill='%231e3a5f' stroke='%23c9a227' stroke-width='4'/><text x='50' y='55' font-family='Tahoma, Arial' font-size='40' font-weight='bold' fill='%23c9a227' text-anchor='middle' dominant-baseline='central'>ج</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+  :root{
+    --primary:#1e3a5f;
+    --primary-dark:#152a47;
+    --secondary:#f1f5f9;
+    --gold:#c9a227;
+    --bg:#f8fafc;
+    --text:#1e293b;
+    --muted:#64748b;
+    --border:#e2e8f0;
+    --danger:#dc2626;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;font-family:"Tajawal", sans-serif;}
+  body{background:var(--bg);color:var(--text);line-height:1.7;}
+  a{color:inherit;text-decoration:none;}
+
+  .top-bar{background:var(--primary-dark);color:#fff;text-align:center;padding:8px 10px;font-size:.8rem;border-bottom:2px solid var(--gold);}
+  
+  header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 1px 3px rgba(0,0,0,.05);}
+  .nav{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;flex-wrap:wrap;gap:10px;}
+  .brand{display:flex;align-items:center;gap:10px;cursor:pointer;}
+  .logo{width:40px;height:40px;border-radius:8px;background:var(--primary);display:grid;place-items:center;color:var(--gold);font-weight:700;font-size:1.1rem;}
+  .brand-text{display:flex;flex-direction:column;line-height:1.2;}
+  .brand-text .name{font-weight:700;font-size:1rem;color:var(--primary);}
+  .brand-text .sub{font-size:.7rem;color:var(--muted);}
+  
+  nav ul{display:flex;gap:4px;list-style:none;flex-wrap:wrap;}
+  nav a{padding:6px 12px;border-radius:6px;font-weight:500;font-size:.9rem;transition:.2s;cursor:pointer;color:var(--text);}
+  nav a:hover{background:var(--secondary);color:var(--primary);}
+  
+  section{max-width:1200px;margin:auto;padding:40px 16px;}
+  
+  .hero{background:linear-gradient(135deg, var(--primary), var(--primary-dark));color:#fff;text-align:center;padding:60px 16px;border-bottom:4px solid var(--gold);}
+  .hero h1{font-size:2rem;margin-bottom:12px;}
+  .hero .divider{width:60px;height:3px;background:var(--gold);margin:12px auto;}
+  .hero p{font-size:1rem;max-width:700px;margin:auto;opacity:.95;margin-bottom:20px;}
+  
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--gold);color:var(--primary-dark);padding:12px 24px;border-radius:6px;font-weight:700;transition:.2s;border:none;cursor:pointer;font-size:.95rem;margin-top:10px;width:100%;max-width:300px;}
+  .btn:hover{background:#b08d1f;}
+  .btn-outline{background:transparent;color:#fff;border:1px solid var(--gold);}
+  .btn-outline:hover{background:var(--gold);color:var(--primary-dark);}
+
+  .section-head{text-align:center;margin-bottom:30px;}
+  h2.title{color:var(--primary);font-size:1.6rem;margin-bottom:6px;}
+  .title-line{width:50px;height:3px;background:var(--gold);margin:8px auto 0;}
+  .subtitle{color:var(--muted);font-size:.95rem;}
+
+  .cards{display:grid;grid-template-columns:1fr;gap:16px;}
+  .card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px;transition:.2s;border-top:4px solid var(--gold);}
+  .card:hover{box-shadow:0 4px 12px rgba(30,58,95,.08);}
+  .card h3{color:var(--primary);margin-bottom:10px;font-size:1.1rem;border-bottom:1px solid var(--border);padding-bottom:8px;}
+  .card p{color:var(--muted);font-size:.9rem;}
+
+  .page-head{background:#fff;border-bottom:1px solid var(--border);padding:30px 16px;text-align:center;}
+  .page-head h1{color:var(--primary);font-size:1.7rem;margin-bottom:6px;}
+  .page-head p{color:var(--muted);font-size:.9rem;}
+
+  .qr-section{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px;text-align:center;margin-bottom:24px;border-top:4px solid var(--gold);}
+  .qr-section h3{color:var(--primary);margin-bottom:12px;font-size:1.1rem;}
+  #qrcode{display:flex;justify-content:center;align-items:center;min-height:120px;}
+
+  .login-box{max-width:100%;margin:0 auto 24px;background:#fff;border:1px solid var(--border);border-radius:8px;padding:24px;text-align:center;}
+  .login-box h3{color:var(--primary);margin-bottom:8px;font-size:1.1rem;}
+  .login-box p{color:var(--muted);font-size:.85rem;margin-bottom:16px;}
+  .login-box input{width:100%;padding:12px;border:1px solid var(--border);border-radius:6px;font-size:1rem;margin-bottom:12px;font-family:"Tajawal", sans-serif;}
+  .login-box input:focus{outline:none;border-color:var(--primary);}
+  .login-box .err{color:var(--danger);font-size:.85rem;margin-top:8px;min-height:18px;}
+  
+  .activity-form{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px;margin-bottom:30px;}
+  .activity-form h3{color:var(--primary);margin-bottom:16px;font-size:1.2rem;border-bottom:1px solid var(--border);padding-bottom:10px;display:flex;flex-direction:column;gap:10px;}
+  .form-grid{display:grid;grid-template-columns:1fr;gap:16px;}
+  label{display:block;font-size:.85rem;color:var(--primary);font-weight:700;margin-bottom:4px;}
+  input[type=text], input[type=url], input[type=email], select, textarea{width:100%;padding:10px;border:1px solid var(--border);border-radius:6px;font-size:.95rem;font-family:"Tajawal", sans-serif;}
+  input:focus, select:focus, textarea:focus{outline:none;border-color:var(--primary);}
+  textarea{resize:vertical;min-height:70px;}
+  
+  .form-actions{margin-top:16px;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--border);padding-top:16px;}
+  .save-btn{background:var(--primary);color:#fff;border:none;padding:12px;border-radius:6px;font-weight:700;cursor:pointer;transition:.2s;font-size:1rem;}
+  .save-btn:hover{background:var(--primary-dark);}
+  .ghost{background:#fff;color:var(--text);border:1px solid var(--border);padding:12px;border-radius:6px;cursor:pointer;font-weight:500;font-size:.95rem;}
+  .ghost:hover{background:var(--secondary);}
+  .logout-btn{background:#fff;color:var(--danger);border:1px solid var(--border);padding:8px 16px;border-radius:6px;font-weight:500;cursor:pointer;font-size:.85rem;width:100%;}
+  .logout-btn:hover{background:#fee2e2;}
+
+  .activities{display:grid;grid-template-columns:1fr;gap:16px;}
+  .activity-card{background:#fff;border:1px solid var(--border);border-radius:8px;display:flex;flex-direction:column;overflow:hidden;transition:.2s;border-top:3px solid var(--secondary);}
+  .activity-card:hover{box-shadow:0 4px 12px rgba(30,58,95,.08);border-color:var(--primary);}
+  .activity-card .media{height:100px;background:var(--secondary);display:grid;place-items:center;color:var(--primary);font-weight:700;font-size:1rem;}
+  .activity-card .body{padding:16px;flex:1;display:flex;flex-direction:column;}
+  .activity-card .tag{display:inline-block;background:#fef3c7;color:#92400e;font-size:.7rem;padding:4px 8px;border-radius:4px;margin-bottom:8px;font-weight:700;width:max-content;}
+  .activity-card h3{color:var(--primary);margin-bottom:6px;font-size:1.05rem;}
+  .activity-card p{color:var(--muted);font-size:.85rem;flex:1;word-break:break-word;}
+  .activity-links{display:flex;gap:8px;margin-top:12px;border-top:1px solid var(--border);padding-top:12px;flex-wrap:wrap;}
+  .activity-links a, .activity-links button{padding:8px;border-radius:6px;font-size:.8rem;font-weight:500;border:none;cursor:pointer;transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:4px;flex:1;}
+  .open-link{background:var(--primary);color:#fff;}
+  .open-link:hover{background:var(--primary-dark);}
+  .del-btn{background:#fff;color:var(--danger);border:1px solid var(--border);}
+  .del-btn:hover{background:#fee2e2;border-color:var(--danger);}
+
+  .empty{text-align:center;color:var(--muted);padding:40px 16px;grid-column:1/-1;font-size:.95rem;background:#fff;border:1px dashed var(--border);border-radius:8px;}
+
+  .contact-wrap{display:grid;grid-template-columns:1fr;gap:16px;}
+  .contact-info{background:#fff;border:1px solid var(--border);border-radius:8px;padding:20px;border-right:4px solid var(--gold);}
+  .contact-info p{margin-bottom:12px;display:flex;align-items:flex-start;gap:8px;color:var(--muted);font-size:.9rem;}
+  .contact-info strong{color:var(--primary);min-width:80px;}
+  .map{border-radius:8px;overflow:hidden;border:1px solid var(--border);display:flex;flex-direction:column;height:250px;}
+  .map iframe{width:100%;flex:1;border:0;}
+  .map-link{display:block;text-align:center;background:var(--primary);color:#fff;padding:10px;font-weight:500;font-size:.9rem;}
+
+  footer{background:#fff;border-top:1px solid var(--border);text-align:center;padding:24px 16px;margin-top:30px;font-size:.85rem;color:var(--muted);}
+  footer .footer-brand{font-weight:700;color:var(--primary);margin-bottom:4px;font-size:1rem;}
+
+  .page{display:none;}
+  .page.active{display:block;}
+  .hidden{display:none !important;}
+
+  /* الاستفسارات */
+  .inquiry-form{background:#fff;border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:24px;max-width:600px;margin-left:auto;margin-right:auto;}
+  .inquiry-form h3{color:var(--primary);margin-bottom:16px;font-size:1.2rem;text-align:center;}
+  .inquiry-form input, .inquiry-form textarea{width:100%;padding:10px;border:1px solid var(--border);border-radius:6px;font-size:.95rem;margin-bottom:12px;font-family:"Tajawal", sans-serif;}
+  .inquiry-form button{background:var(--primary);color:#fff;border:none;padding:12px;border-radius:6px;font-weight:700;cursor:pointer;width:100%;font-size:1rem;}
+  .inquiry-form button:hover{background:var(--primary-dark);}
+  .inquiry-list{display:grid;grid-template-columns:1fr;gap:16px;margin-top:24px;}
+  .inquiry-item{background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px;border-right:4px solid var(--gold);}
+  .inquiry-item h4{color:var(--primary);margin-bottom:8px;font-size:1rem;}
+  .inquiry-item p{color:var(--text);font-size:.9rem;margin-bottom:8px;}
+  .inquiry-item .meta{font-size:.8rem;color:var(--muted);display:flex;justify-content:space-between;border-top:1px solid var(--border);padding-top:8px;margin-top:8px;}
+
+  /* التقييمات (تظهر للجميع) */
+  .rating-form{background:#fff;border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:24px;max-width:600px;margin-left:auto;margin-right:auto;text-align:center;}
+  .rating-form h3{color:var(--primary);margin-bottom:16px;font-size:1.2rem;}
+  .stars-container{display:flex;justify-content:center;gap:8px;margin-bottom:16px;direction:ltr;}
+  .star{font-size:2.5rem;color:#d1d5db;cursor:pointer;transition:.2s;}
+  .star:hover, .star.active{color:var(--gold);}
+  .rating-form textarea{width:100%;padding:10px;border:1px solid var(--border);border-radius:6px;font-size:.95rem;margin-bottom:12px;font-family:"Tajawal", sans-serif;text-align:right;}
+  .rating-form button{background:var(--primary);color:#fff;border:none;padding:12px;border-radius:6px;font-weight:700;cursor:pointer;width:100%;font-size:1rem;}
+  .rating-form button:hover{background:var(--primary-dark);}
+
+  .rating-list{display:grid;grid-template-columns:1fr;gap:16px;margin-top:24px;}
+  .rating-item{background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px;border-right:4px solid var(--gold);text-align:right;}
+  .rating-item h4{color:var(--primary);margin-bottom:4px;font-size:1rem;display:flex;justify-content:space-between;align-items:center;}
+  .rating-item .stars-display{color:var(--gold);font-size:1.1rem;direction:ltr;}
+  .rating-item p{color:var(--text);font-size:.9rem;margin-bottom:8px;}
+  .rating-item .meta{font-size:.8rem;color:var(--muted);border-top:1px solid var(--border);padding-top:8px;margin-top:8px;display:flex;justify-content:space-between;}
+
+  @media(min-width:768px){
+    .nav{padding:12px 24px;}
+    .logo{width:48px;height:48px;font-size:1.2rem;}
+    .brand-text .name{font-size:1.1rem;}
+    .brand-text .sub{font-size:.75rem;}
+    nav a{padding:8px 16px;font-size:.95rem;}
+    
+    section{padding:50px 24px;}
+    .hero{padding:80px 20px;}
+    .hero h1{font-size:2.5rem;}
+    .hero p{font-size:1.15rem;}
+    .btn{width:auto;margin:10px 5px;}
+    
+    h2.title{font-size:1.8rem;}
+    .subtitle{font-size:1rem;}
+    
+    .cards{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
+    .card{padding:28px;}
+    .card h3{font-size:1.2rem;}
+    .card p{font-size:.95rem;}
+
+    .page-head{padding:40px 24px;}
+    .page-head h1{font-size:2rem;}
+    
+    .qr-section{padding:24px;}
+    .login-box{padding:30px;}
+    
+    .activity-form{padding:30px;}
+    .activity-form h3{flex-direction:row;justify-content:space-between;}
+    .form-grid{grid-template-columns:1fr 1fr;gap:20px;}
+    .form-actions{flex-direction:row;justify-content:flex-end;}
+    .save-btn, .ghost, .logout-btn{width:auto;}
+    
+    .activities{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;}
+    .activity-card .media{height:120px;}
+    .activity-card .body{padding:20px;}
+    .activity-card h3{font-size:1.1rem;}
+    .activity-card p{font-size:.9rem;}
+    .activity-links a, .activity-links button{padding:8px 14px;font-size:.85rem;}
+
+    .contact-wrap{grid-template-columns:1fr 1fr;gap:24px;}
+    .contact-info{padding:28px;}
+    .map{height:auto;min-height:300px;}
+    
+    footer{padding:30px;margin-top:40px;}
+
+    .inquiry-list{grid-template-columns:1fr 1fr;}
+    .rating-list{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">﷽ — وزارة التعليم — ثانوية جعفر الصادق بمكة المكرمة</div>
+
+<header>
+  <div class="nav">
+    <div class="brand" onclick="showPage('home')">
+      <div class="logo">ج</div>
+      <div class="brand-text">
+        <span class="name">ثانوية جعفر الصادق</span>
+        <span class="sub">مكة المكرمة · مسارات</span>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a onclick="showPage('home')">الرئيسية</a></li>
+        <li><a onclick="showPage('home','about')">عن المدرسة</a></li>
+        <li><a onclick="showPage('home','vision')">الرؤية والرسالة</a></li>
+        <li><a onclick="showPage('activities')">الأنشطة</a></li>
+        <li><a onclick="showPage('inquiries')">الاستفسارات</a></li>
+        <li><a onclick="showPage('ratings')">تقييم الموقع</a></li>
+        <li><a onclick="showPage('home','contact')">التواصل</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- الصفحة الرئيسية -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <h1>ثانوية جعفر الصادق</h1>
+    <div class="divider"></div>
+    <p>بيئة تعليمية محفزة تُعدّ جيلاً متميزاً بالعلم والأخلاق في قلب مكة المكرمة — نظام المسارات</p>
+    <button class="btn" onclick="showPage('activities')">استعرض الأنشطة</button>
+    <a class="btn btn-outline" href="https://maps.app.goo.gl/EoUkpe2R5eHfJ4La6" target="_blank" rel="noopener">📍 موقعنا على الخريطة</a>
+  </div>
+
+  <section id="about">
+    <div class="section-head">
+      <h2 class="title">عن المدرسة</h2>
+      <div class="title-line"></div>
+      <p class="subtitle">تعريف موجز بمدرستنا ورسالتها التربوية</p>
+    </div>
+    <div class="cards">
+      <div class="card"><h3>من نحن</h3><p>ثانوية جعفر الصادق في مكة المكرمة، مؤسسة تعليمية تسعى لتقديم تعليم نوعي يجمع بين التميز الأكاديمي والتربية الأخلاقية في بيئة آمنة ومحفزة.</p></div>
+      <div class="card"><h3>نظام المسارات</h3><p>نطبّق نظام المسارات الثانوية الحديث الذي يتيح للطالب اختيار مساره التعليمي بما يتوافق مع قدراته واهتماماته ومتطلبات سوق العمل المستقبلي.</p></div>
+      <div class="card"><h3>لماذا نحن؟</h3><p>كادر تعليمي مؤهل، مناهج متطورة، أنشطة لا صفية متنوعة، ومتابعة مستمرة لمستوى الطلاب.</p></div>
+    </div>
+  </section>
+
+  <section id="vision" style="background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);max-width:none;padding:40px 0;">
+    <div style="max-width:1200px;margin:auto;padding:0 16px;">
+      <div class="section-head">
+        <h2 class="title">الرؤية والرسالة</h2>
+        <div class="title-line"></div>
+        <p class="subtitle">بوصلتنا التربوية</p>
+      </div>
+      <div class="cards">
+        <div class="card"><h3>رؤيتنا</h3><p>أن نكون من المدارس الثانوية الرائدة في مكة المكرمة في تقديم تعليم متميز يخرّج طلاباً متفوقين علمياً وأخلاقياً.</p></div>
+        <div class="card"><h3>رسالتنا</h3><p>تقديم تعليم شامل عالي الجودة يعتمد على أساليب تعليمية حديثة، وبيئة تربوية إسلامية، وشراكة فعّالة مع أولياء الأمور.</p></div>
+        <div class="card"><h3>قيمنا</h3><p>الإخلاص، الانتماء، الاحترام، التعاون، الإبداع، والمسؤولية.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-head">
+      <h2 class="title">التواصل معنا</h2>
+      <div class="title-line"></div>
+      <p class="subtitle">يسعدنا استقبال استفساراتكم</p>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <p><strong>📍 الموقع:</strong> <span>مكة المكرمة، المملكة العربية السعودية</span></p>
+        <p><strong>🏫 النوع:</strong> <span>ثانوية — نظام المسارات</span></p>
+        <p><strong>📞 الهاتف:</strong> <span>012-XXXXXXX</span></p>
+        <p><strong>✉️ البريد:</strong> <span>info@school.example</span></p>
+        <p><strong>🕐 الدوام:</strong> <span>الأحد - الخميس، 7:00 ص - 2:00 م</span></p>
+        <a class="btn" style="margin-top:6px;" href="https://maps.app.goo.gl/EoUkpe2R5eHfJ4La6" target="_blank" rel="noopener">افتح الموقع في خرائط جوجل</a>
+      </div>
+      <div class="map">
+        <iframe src="https://maps.google.com/maps?q=%D8%AC%D8%B9%D9%81%D8%B1%20%D8%A7%D9%84%D8%B5%D8%A7%D8%AF%D9%82%20%D8%A7%D9%84%D8%AB%D8%A7%D9%86%D9%88%D9%8A%D8%A9%20%D9%85%D9%83%D8%A9%20%D8%A7%D9%84%D9%85%D9%83%D8%B1%D9%85%D8%A9&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <a class="map-link" href="https://maps.app.goo.gl/EoUkpe2R5eHfJ4La6" target="_blank" rel="noopener">📍 عرض الموقع الكامل على خرائط جوجل</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- صفحة الأنشطة -->
+<div id="page-activities" class="page">
+  <div class="page-head">
+    <h1>سجل الأنشطة المدرسية</h1>
+    <p>هنا تُعرض جميع أنشطة ثانوية جعفر الصادق — روابط لملفات PDF، Word، وصور</p>
+  </div>
+
+  <section>
+    <div class="qr-section">
+      <h3>📱 امسح الباركود لفتح الموقع من جوالك</h3>
+      <div id="qrcode"></div>
+    </div>
+
+    <div style="text-align:center;margin-bottom:24px;">
+      <button id="showLoginBtn" class="btn" onclick="showLogin()">🔐 دخول الإدارة</button>
+    </div>
+
+    <div id="loginBox" class="login-box hidden">
+      <h3>تسجيل الدخول للإدارة</h3>
+      <p>هذه المنطقة مخصصة لمدير الموقع فقط</p>
+      <input id="passInput" type="password" placeholder="أدخل كلمة المرور" onkeydown="if(event.key==='Enter')tryLogin()">
+      <button class="save-btn" onclick="tryLogin()" style="width:100%;">دخول</button>
+      <div class="err" id="loginErr"></div>
+    </div>
+
+    <div id="activityForm" class="activity-form hidden">
+      <h3>
+        <span>➕ إضافة نشاط جديد</span>
+        <button class="logout-btn" onclick="logout()">تسجيل الخروج</button>
+      </h3>
+
+      <div class="form-grid">
+        <div><label>عنوان النشاط *</label><input type="text" id="actTitle" placeholder="مثال: زيارة معرض الكتاب"></div>
+        <div>
+          <label>نوع المرفق</label>
+          <select id="actType">
+            <option value="link">🔗 رابط خارجي</option>
+            <option value="pdf">📄 ملف PDF</option>
+            <option value="word">📝 ملف Word</option>
+            <option value="image">🖼️ صورة</option>
+          </select>
+        </div>
+        <div class="full"><label>الوصف</label><textarea id="actDesc" placeholder="وصف مختصر للنشاط..."></textarea></div>
+        <div class="full">
+          <label>رابط الملف أو الصورة (من Google Drive مثلاً) *</label>
+          <input type="url" id="actLink" placeholder="https://..." required>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="ghost" onclick="clearForm()">تفريغ</button>
+        <button class="save-btn" onclick="addActivity()">💾 حفظ النشاط</button>
+      </div>
+    </div>
+
+    <div class="activities" id="activitiesList"></div>
+  </section>
+</div>
+
+<!-- صفحة الاستفسارات -->
+<div id="page-inquiries" class="page">
+  <div class="page-head">
+    <h1>الاستفسارات والتواصل</h1>
+    <p>أرسل استفسارك أو ملاحظتك، وسيتم الرد عليك من قبل إدارة المدرسة (لن يظهر استفسارك لباقي الزوار).</p>
+  </div>
+
+  <section>
+    <div class="inquiry-form">
+      <h3>📝 إرسال استفسار جديد</h3>
+      <input type="text" id="inqName" placeholder="اسمك الكريم (اختياري)">
+      <input type="text" id="inqContact" placeholder="رقم الجوال أو البريد (للاتصال بك - اختياري)">
+      <textarea id="inqMessage" placeholder="اكتب استفسارك أو ملاحظتك هنا *" required></textarea>
+      <button onclick="sendInquiry()">📤 إرسال الاستفسار</button>
+    </div>
+
+    <div style="text-align:center;margin-bottom:24px;">
+      <button id="showInqLoginBtn" class="btn" onclick="showInqLogin()">🔐 دخول الإدارة (لعرض الاستفسارات)</button>
+    </div>
+
+    <div id="inqLoginBox" class="login-box hidden" style="max-width:400px;margin:0 auto 24px;">
+      <h3>تسجيل دخول الإدارة</h3>
+      <p>لعرض الاستفسارات المرسلة فقط</p>
+      <input id="inqPassInput" type="password" placeholder="أدخل كلمة المرور" onkeydown="if(event.key==='Enter')tryInqLogin()">
+      <button class="save-btn" onclick="tryInqLogin()" style="width:100%;">دخول</button>
+      <div class="err" id="inqLoginErr"></div>
+    </div>
+
+    <div id="inquiriesAdminView" class="hidden">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid var(--border);padding-bottom:12px;flex-wrap:wrap;gap:10px;">
+        <h3 style="color:var(--primary);font-size:1.2rem;margin:0;">📋 الاستفسارات الواردة</h3>
+        <button class="logout-btn" onclick="logoutInq()" style="width:auto;">تسجيل الخروج</button>
+      </div>
+      <div class="inquiry-list" id="inquiriesList"></div>
+    </div>
+  </section>
+</div>
+
+<!-- صفحة تقييم الموقع (الآن الكل يقدر يشوف) -->
+<div id="page-ratings" class="page">
+  <div class="page-head">
+    <h1>تقييم الموقع</h1>
+    <p>رأيك يهمنا! قم بتقييم الموقع وكتابة ملاحظاتك لمساعدتنا على التطوير.</p>
+  </div>
+
+  <section>
+    <!-- نموذج التقييم -->
+    <div class="rating-form">
+      <h3>⭐ قيم تجربتك مع الموقع</h3>
+      <div class="stars-container" id="starContainer">
+        <span class="star" data-value="1">★</span>
+        <span class="star" data-value="2">★</span>
+        <span class="star" data-value="3">★</span>
+        <span class="star" data-value="4">★</span>
+        <span class="star" data-value="5">★</span>
+      </div>
+      <input type="hidden" id="ratingValue" value="0">
+      <textarea id="ratingComment" placeholder="أضف تعليقاً أو اقتراحاً (اختياري)"></textarea>
+      <button onclick="submitRating()">📤 إرسال التقييم</button>
+    </div>
+
+    <!-- قائمة التقييمات (تظهر للجميع الآن) -->
+    <div style="margin-top: 30px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid var(--border);padding-bottom:12px;flex-wrap:wrap;gap:10px;">
+        <h3 style="color:var(--primary);font-size:1.2rem;margin:0;">📊 تقييمات الزوار</h3>
+        <!-- زر دخول الإدارة (يظهر فقط للمدير عشان يقدر يحذف) -->
+        <button id="showRatingLoginBtn" class="btn" onclick="showRatingLogin()" style="width:auto;margin:0;background:#fff;color:var(--primary);border:1px solid var(--border);padding:8px 16px;font-size:.85rem;">🔐 إدارة التقييمات</button>
+      </div>
+
+      <!-- نموذج دخول الإدارة (مخفي) -->
+      <div id="ratingLoginBox" class="login-box hidden" style="max-width:400px;margin:0 auto 24px;">
+        <h3>تسجيل دخول الإدارة</h3>
+        <p>للتحكم في التقييمات (الحذف)</p>
+        <input id="ratingPassInput" type="password" placeholder="أدخل كلمة المرور" onkeydown="if(event.key==='Enter')tryRatingLogin()">
+        <button class="save-btn" onclick="tryRatingLogin()" style="width:100%;">دخول</button>
+        <div class="err" id="ratingLoginErr"></div>
+      </div>
+
+      <div class="rating-list" id="ratingsList"></div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="footer-brand">ثانوية جعفر الصادق - البوابة الإلكترونية</div>
+  <div>© <span id="year"></span> جميع الحقوق محفوظة — مكة المكرمة</div>
+  <div style="margin-top: 8px; font-size: 0.8rem; color: var(--muted);">تصميم وتطوير الطالب: حسن صالح حسن - 3/4</div>
+</footer>
+
+<div id="lightbox" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.9);align-items:center;justify-content:center;padding:20px;" onclick="closeLightbox(event)">
+  <button style="position:absolute;top:20px;right:20px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;" onclick="closeLightbox(event, true)">✕</button>
+  <img id="lightboxImg" src="" alt="عرض الصورة" style="max-width:95vw;max-height:90vh;object-fit:contain;" onclick="event.stopPropagation()">
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyAT99F_WzJPBRW2toYRjhnbQtGnG4k0uPA",
+  authDomain: "jaafar-school.firebaseapp.com",
+  projectId: "jaafar-school",
+  storageBucket: "jaafar-school.firebasestorage.app",
+  messagingSenderId: "33040449543",
+  appId: "1:33040449543:web:c098621dfa67811bc1aaa2",
+  measurementId: "G-7T3752LY8M"
+};
+
+try {
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  window.activitiesCollection = db.collection("activities");
+  window.inquiriesCollection = db.collection("inquiries");
+  window.ratingsCollection = db.collection("ratings");
+  console.log("✅ Firebase connected");
+} catch (error) {
+  console.error("❌ Firebase error:", error);
+}
+
+const ADMIN_PASSWORD = "Jaafar@2026"; 
+const AUTH_KEY = 'jafar_admin_session';
+const INQ_AUTH_KEY = 'jafar_inq_session';
+const RATING_AUTH_KEY = 'jafar_rating_session';
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+new QRCode(document.getElementById("qrcode"), {
+    text: window.location.href,
+    width: 120,
+    height: 120,
+    colorDark : "#1e3a5f",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
+});
+
+function showPage(page, anchor){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if(anchor){
+    setTimeout(() => {
+      const el = document.getElementById(anchor);
+      if(el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  }
+  if(page === 'activities') renderActivities();
+  if(page === 'inquiries') {
+    if(!isInqLoggedIn()) {
+      document.getElementById('inquiriesAdminView').classList.add('hidden');
+      document.getElementById('showInqLoginBtn').classList.remove('hidden');
+    }
+  }
+  if(page === 'ratings') {
+    renderRatings(); // الكل يقدر يشوفها
+    if(!isRatingLoggedIn()) {
+      document.getElementById('ratingLoginBox').classList.add('hidden');
+    }
+  }
+}
+
+/* ====== الأنشطة ====== */
+function isLoggedIn(){ return sessionStorage.getItem(AUTH_KEY) === 'yes'; }
+
+function updateUI(){
+  const logged = isLoggedIn();
+  document.getElementById('activityForm').classList.toggle('hidden', !logged);
+  document.getElementById('showLoginBtn').classList.toggle('hidden', logged);
+  document.getElementById('loginBox').classList.add('hidden');
+}
+
+function showLogin(){
+  document.getElementById('loginBox').classList.remove('hidden');
+  document.getElementById('passInput').focus();
+}
+
+function tryLogin(){
+  const val = document.getElementById('passInput').value;
+  const err = document.getElementById('loginErr');
+  if(val === ADMIN_PASSWORD){
+    sessionStorage.setItem(AUTH_KEY, 'yes');
+    document.getElementById('passInput').value = '';
+    err.textContent = '';
+    updateUI();
+    renderActivities();
+  } else {
+    err.textContent = 'كلمة المرور غير صحيحة ❌';
+  }
+}
+
+function logout(){
+  sessionStorage.removeItem(AUTH_KEY);
+  updateUI();
+  renderActivities();
+}
+
+async function addActivity(){
+  if(!isLoggedIn()){ alert('غير مصرح لك بالإضافة'); return; }
+
+  const title = document.getElementById('actTitle').value.trim();
+  const desc  = document.getElementById('actDesc').value.trim();
+  const type  = document.getElementById('actType').value;
+  const link  = document.getElementById('actLink').value.trim();
+
+  if(!title){ alert('الرجاء إدخال عنوان النشاط'); return; }
+  if(!link){ alert('الرجاء إدخال رابط الملف أو الصورة'); return; }
+
+  const newActivity = {
+    title: title,
+    desc: desc,
+    type: type,
+    link: link,
+    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  };
+
+  const btn = document.querySelector('.save-btn[onclick="addActivity()"]');
+  const originalText = btn.innerHTML;
+  btn.innerHTML = '⏳ جاري الحفظ...';
+  btn.disabled = true;
+
+  try {
+    await window.activitiesCollection.add(newActivity);
+    clearForm();
+    renderActivities();
+    alert('تم حفظ النشاط بنجاح ✅');
+  } catch(err) {
+    console.error("❌ خطأ:", err);
+    alert('⚠️ فشل الحفظ! راجع الكونسول (F12).');
+  } finally {
+    btn.innerHTML = originalText;
+    btn.disabled = false;
+  }
+}
+
+function clearForm(){
+  ['actTitle','actDesc','actLink'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.value = '';
+  });
+}
+
+function typeLabel(t){
+  if(t==='pdf') return '📄 ملف PDF';
+  if(t==='word') return '📝 ملف Word';
+  if(t==='image') return '🖼️ صورة';
+  return '🔗 رابط خارجي';
+}
+
+function openLightbox(src){
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(event, force){
+  if(force || event.target.id === 'lightbox'){
+    document.getElementById('lightbox').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+}
+
+async function renderActivities(){
+  const wrap = document.getElementById('activitiesList');
+  wrap.innerHTML = '<div class="empty">⏳ جاري تحميل الأنشطة...</div>';
+  
+  try {
+    const snapshot = await window.activitiesCollection.orderBy('createdAt', 'desc').get();
+    const list = [];
+    snapshot.forEach(doc => {
+      list.push({ id: doc.id, ...doc.data() });
+    });
+
+    if(!list.length){
+      wrap.innerHTML = '<div class="empty">لا توجد أنشطة مضافة حالياً.</div>';
+      return;
+    }
+
+    wrap.innerHTML = list.map(a => {
+      const media = `<div class="media">${typeLabel(a.type)}</div>`;
+      const openLabel = a.type==='pdf' ? 'فتح الملف'
+        : a.type==='word' ? 'تحميل الملف'
+        : a.type==='image' ? 'عرض الصورة'
+        : 'فتح الرابط';
+      const delBtn = isLoggedIn() ? `<button class="del-btn" onclick="deleteActivity('${a.id}')">🗑 حذف</button>` : '';
+      
+      const openBtn = a.type === 'image'
+        ? `<button class="open-link" onclick="openLightbox('${a.link.replace(/'/g, "\\'")}')">${openLabel}</button>`
+        : `<a class="open-link" href="${a.link}" target="_blank" rel="noopener">${openLabel}</a>`;
+
+      return `
+        <div class="activity-card">
+          ${media}
+          <div class="body">
+            <span class="tag">${typeLabel(a.type)}</span>
+            <h3>${a.title}</h3>
+            <p>${a.desc || ''}</p>
+            <div class="activity-links">
+              ${openBtn}
+              ${delBtn}
+            </div>
+          </div>
+        </div>`;
+    }).join('');
+  } catch (error) {
+    console.error("❌ خطأ:", error);
+    wrap.innerHTML = '<div class="empty" style="color:red;">⚠️ تعذر الاتصال بقاعدة البيانات. تأكد من الصلاحيات (Rules).</div>';
+  }
+}
+
+async function deleteActivity(id){
+  if(!isLoggedIn()) return;
+  if(!confirm('هل تريد حذف هذا النشاط نهائياً؟')) return;
+  
+  try {
+    await window.activitiesCollection.doc(id).delete();
+    renderActivities();
+  } catch (error) {
+    console.error("❌ خطأ:", error);
+    alert('حدث خطأ أثناء الحذف');
+  }
+}
+
+/* ====== الاستفسارات ====== */
+
+async function sendInquiry(){
+  const name = document.getElementById('inqName').value.trim() || 'زائر';
+  const contact = document.getElementById('inqContact').value.trim() || 'لا يوجد';
+  const message = document.getElementById('inqMessage').value.trim();
+
+  if(!message){ alert('الرجاء كتابة الاستفسار أولاً'); return; }
+
+  const btn = document.querySelector('.inquiry-form button');
+  const orig = btn.innerHTML;
+  btn.innerHTML = '⏳ جاري الإرسال...';
+  btn.disabled = true;
+
+  try {
+    await window.inquiriesCollection.add({
+      name: name,
+      contact: contact,
+      message: message,
+      date: new Date().toLocaleDateString('ar-SA'),
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    document.getElementById('inqName').value = '';
+    document.getElementById('inqContact').value = '';
+    document.getElementById('inqMessage').value = '';
+    alert('تم إرسال استفسارك بنجاح ✅. سيتم مراجعته من قبل الإدارة.');
+  } catch(err) {
+    console.error(err);
+    alert('⚠️ فشل الإرسال. راجع الكونسول (F12) لمعرفة السبب.');
+  } finally {
+    btn.innerHTML = orig;
+    btn.disabled = false;
+  }
+}
+
+function isInqLoggedIn(){ return sessionStorage.getItem(INQ_AUTH_KEY) === 'yes'; }
+
+function showInqLogin(){
+  document.getElementById('inqLoginBox').classList.remove('hidden');
+  document.getElementById('inqPassInput').focus();
+}
+
+function tryInqLogin(){
+  const val = document.getElementById('inqPassInput').value;
+  const err = document.getElementById('inqLoginErr');
+  if(val === ADMIN_PASSWORD){
+    sessionStorage.setItem(INQ_AUTH_KEY, 'yes');
+    document.getElementById('inqPassInput').value = '';
+    err.textContent = '';
+    document.getElementById('inqLoginBox').classList.add('hidden');
+    document.getElementById('showInqLoginBtn').classList.add('hidden');
+    document.getElementById('inquiriesAdminView').classList.remove('hidden');
+    renderInquiries();
+  } else {
+    err.textContent = 'كلمة المرور غير صحيحة ❌';
+  }
+}
+
+function logoutInq(){
+  sessionStorage.removeItem(INQ_AUTH_KEY);
+  document.getElementById('inquiriesAdminView').classList.add('hidden');
+  document.getElementById('showInqLoginBtn').classList.remove('hidden');
+}
+
+async function renderInquiries(){
+  const listWrap = document.getElementById('inquiriesList');
+  listWrap.innerHTML = '<div class="empty">⏳ جاري تحميل الاستفسارات...</div>';
+
+  try {
+    const snapshot = await window.inquiriesCollection.orderBy('createdAt', 'desc').get();
+    const list = [];
+    snapshot.forEach(doc => {
+      list.push({ id: doc.id, ...doc.data() });
+    });
+
+    if(!list.length){
+      listWrap.innerHTML = '<div class="empty">لا توجد استفسارات واردة حالياً.</div>';
+      return;
+    }
+
+    listWrap.innerHTML = list.map(i => `
+      <div class="inquiry-item">
+        <h4>👤 ${i.name}</h4>
+        <p>${i.message}</p>
+        <div class="meta">
+          <span>📞 ${i.contact}</span>
+          <span>📅 ${i.date || ''}</span>
+          <button class="del-btn" style="padding:4px 8px;font-size:.75rem;" onclick="deleteInquiry('${i.id}')">🗑 حذف</button>
+        </div>
+      </div>
+    `).join('');
+  } catch (error) {
+    console.error(error);
+    listWrap.innerHTML = '<div class="empty" style="color:red;">⚠️ تعذر الاتصال بقاعدة البيانات.</div>';
+  }
+}
+
+async function deleteInquiry(id){
+  if(!isInqLoggedIn()) return;
+  if(!confirm('هل تريد حذف هذا الاستفسار؟')) return;
+  
+  try {
+    await window.inquiriesCollection.doc(id).delete();
+    renderInquiries();
+  } catch (error) {
+    console.error(error);
+    alert('حدث خطأ أثناء الحذف');
+  }
+}
+
+/* ====== تقييم الموقع ====== */
+
+let selectedRating = 0;
+
+document.querySelectorAll('.star').forEach(star => {
+  star.addEventListener('click', function() {
+    selectedRating = parseInt(this.getAttribute('data-value'));
+    document.getElementById('ratingValue').value = selectedRating;
+    
+    document.querySelectorAll('.star').forEach(s => {
+      if (parseInt(s.getAttribute('data-value')) <= selectedRating) {
+        s.classList.add('active');
+      } else {
+        s.classList.remove('active');
+      }
+    });
+  });
+});
+
+async function submitRating(){
+  if(selectedRating === 0) {
+    alert('الرجاء اختيار عدد النجوم أولاً (من 1 إلى 5).');
+    return;
+  }
+
+  const comment = document.getElementById('ratingComment').value.trim();
+  const btn = document.querySelector('.rating-form button');
+  const orig = btn.innerHTML;
+  btn.innerHTML = '⏳ جاري الإرسال...';
+  btn.disabled = true;
+
+  try {
+    await window.ratingsCollection.add({
+      stars: selectedRating,
+      comment: comment || 'بدون تعليق',
+      date: new Date().toLocaleDateString('ar-SA'),
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    
+    document.getElementById('ratingComment').value = '';
+    document.getElementById('ratingValue').value = 0;
+    selectedRating = 0;
+    document.querySelectorAll('.star').forEach(s => s.classList.remove('active'));
+    
+    alert('شكراً لك! تم استلام تقييمك بنجاح ✅');
+    renderRatings(); // تحديث القائمة فوراً
+  } catch(err) {
+    console.error(err);
+    alert('⚠️ فشل إرسال التقييم. راجع الكونسول (F12).');
+  } finally {
+    btn.innerHTML = orig;
+    btn.disabled = false;
+  }
+}
+
+function isRatingLoggedIn(){ return sessionStorage.getItem(RATING_AUTH_KEY) === 'yes'; }
+
+function showRatingLogin(){
+  document.getElementById('ratingLoginBox').classList.remove('hidden');
+  document.getElementById('ratingPassInput').focus();
+}
+
+function tryRatingLogin(){
+  const val = document.getElementById('ratingPassInput').value;
+  const err = document.getElementById('ratingLoginErr');
+  if(val === ADMIN_PASSWORD){
+    sessionStorage.setItem(RATING_AUTH_KEY, 'yes');
+    document.getElementById('ratingPassInput').value = '';
+    err.textContent = '';
+    document.getElementById('ratingLoginBox').classList.add('hidden');
+    document.getElementById('showRatingLoginBtn').style.display = 'none';
+    renderRatings(); // إعادة العرض عشان تظهر أزرار الحذف
+  } else {
+    err.textContent = 'كلمة المرور غير صحيحة ❌';
+  }
+}
+
+async function renderRatings(){
+  const listWrap = document.getElementById('ratingsList');
+  
+  try {
+    const snapshot = await window.ratingsCollection.orderBy('createdAt', 'desc').get();
+    const list = [];
+    let totalStars = 0;
+    snapshot.forEach(doc => {
+      const data = doc.data();
+      list.push({ id: doc.id, ...data });
+      totalStars += data.stars;
+    });
+
+    if(!list.length){
+      listWrap.innerHTML = '<div class="empty">لا توجد تقييمات حالياً. كن أول من يقيم الموقع!</div>';
+      return;
+    }
+
+    const avg = (totalStars / list.length).toFixed(1);
+
+    // ملخص التقييم (يظهر للجميع)
+    let summaryHtml = `
+      <div style="grid-column: 1/-1; text-align:center; background:#f8fafc; padding:16px; border-radius:8px; border:1px solid var(--border); margin-bottom:16px;">
+        <h3 style="color:var(--primary);margin-bottom:4px;font-size:1.2rem;">متوسط التقييم العام: ${avg} ⭐</h3>
+        <p style="color:var(--muted);font-size:.85rem;">بناءً على ${list.length} تقييم.</p>
+      </div>
+    `;
+
+    // التقييمات (يظهر زر الحذف فقط للمدير)
+    listWrap.innerHTML = summaryHtml + list.map(r => {
+      let starsHtml = '';
+      for (let i = 1; i <= 5; i++) {
+        starsHtml += i <= r.stars ? '★' : '☆';
+      }
+      
+      // زر الحذف يظهر فقط لو المدير مسجل دخول
+      const delBtn = isRatingLoggedIn() 
+        ? `<button class="del-btn" style="padding:4px 8px;font-size:.75rem;" onclick="deleteRating('${r.id}')">🗑 حذف</button>` 
+        : '';
+
+      return `
+        <div class="rating-item">
+          <h4>
+            <span>تقييم</span>
+            <span class="stars-display">${starsHtml}</span>
+          </h4>
+          <p>${r.comment}</p>
+          <div class="meta">
+            <span>📅 ${r.date || ''}</span>
+            ${delBtn}
+          </div>
+        </div>
+      `;
+    }).join('');
+  } catch (error) {
+    console.error(error);
+    listWrap.innerHTML = '<div class="empty" style="color:red;">⚠️ تعذر الاتصال بقاعدة البيانات.</div>';
+  }
+}
+
+async function deleteRating(id){
+  if(!isRatingLoggedIn()) return;
+  if(!confirm('هل تريد حذف هذا التقييم؟')) return;
+  
+  try {
+    await window.ratingsCollection.doc(id).delete();
+    renderRatings();
+  } catch (error) {
+    console.error(error);
+    alert('حدث خطأ أثناء الحذف');
+  }
+}
+
+updateUI();
+renderActivities();
+</script>
+</body>
+</html>
